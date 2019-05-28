@@ -1,0 +1,7 @@
+file = open("som.txt", 'w')
+file.write("Have no fear! Why?\nBecause I am here!")
+file.write("Have no fear! Why?\nBecause I am here!")
+file.write("Have no fear! Why?\nBecause I am here!")
+file.write("Have no fear! Why?\nBecause I am here!")
+file.write("Have no fear! Why?\nBecause I am here!")
+file.close()

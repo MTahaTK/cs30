@@ -1,0 +1,5 @@
+In Python, you can:
+- Use objects and classes to streamline code and boost efficiency of programs
+- Create well-rounded programs
+- Create contingencies for failures in programs
+- Use its easy-to-learn nature to create programs of varying complexities
