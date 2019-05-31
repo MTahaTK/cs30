@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import sys
 def bp_ins(filename, start, end):
     """Inserts breakpoints into code"""
     with open(filename, 'r') as f:
@@ -19,10 +20,10 @@ def debug_file_exec(filename):
     exec(open(f"break_{filename}").read())
 
 filename = 'text.py'
-bp_ins(filename, 2, 66)
-exec(open('break_text.py').read())
-#os.system("C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
-
+# bp_ins(filename, 2, 66)
+# exec(open('break_text.py').read())
+# #os.system("C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
+sys.settrace(filename)
 
 # print('ok')
 # print('no')
