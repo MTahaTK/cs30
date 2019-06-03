@@ -123,178 +123,178 @@ def inp_quit():
 def cont():
     msg = input("Press enter to continue. ")
 
+def calculator():
+    # Creates a series of prompts for each of the mathematical functions
+    # defined earlier.
+    poss = ["1", "2", "3", "4", "5", "6", "quit"]
 
-# Creates a series of prompts for each of the mathematical functions
-# defined earlier.
-poss = ["1", "2", "3", "4", "5", "6", "quit"]
+    prompt = """Enter '1' to add two integers.
+    Enter '2' to subtract two integers.
+    Enter '3' to multiply two integers.
+    Enter '4' to divide two integers.
+    Enter '5' for whole number division with a remainder.
+    Enter '6' to calculate simplified square roots.
+    Enter 'quit' to end the program. """
 
-prompt = """Enter '1' to add two integers.
-Enter '2' to subtract two integers.
-Enter '3' to multiply two integers.
-Enter '4' to divide two integers.
-Enter '5' for whole number division with a remainder.
-Enter '6' to calculate simplified square roots.
-Enter 'quit' to end the program. """
+    # Sets a flag - active - as True.
+    active = True
 
-# Sets a flag - active - as True.
-active = True
-
-# Loops through if statements that check the given input for the
-# program. The if statements will run the respective mathematical
-# functions for each provided input. Then, the result of each function
-# is printed out and the prompts appear once again. The last if
-# statement quits the program if 'quit' is inputted. For each operation
-# branch, the program checks whether or not the provided inputs for
-# the terms are 'quit.' If they are, the program quits.
-while active:
-    print("-------------------------")
-    msg = input(prompt)
-
-    # Checks whether or not the input is a valid input
-    if msg not in poss:
+    # Loops through if statements that check the given input for the
+    # program. The if statements will run the respective mathematical
+    # functions for each provided input. Then, the result of each function
+    # is printed out and the prompts appear once again. The last if
+    # statement quits the program if 'quit' is inputted. For each operation
+    # branch, the program checks whether or not the provided inputs for
+    # the terms are 'quit.' If they are, the program quits.
+    while active:
         print("-------------------------")
-        print("Please provide a valid input.")
-        cont()
+        msg = input(prompt)
 
-    # Check for addition operation
-    if msg == '1':
-        print("-------------------------")
-        # First number inputted
-        act = True
-        # While act is true, this branch runs and a try - except statement
-        # is evaluated to alert the user of errors and to request new inputs.
-        while act:
-            try:
-                x = input("Enter the first number: ")
-                if x == 'quit':
-                    inp_quit()
-                # Second number inputted
-                y = input("Enter the second number: ")
-                if y == 'quit':
-                    inp_quit()
-                print("-------------------------")
-                print(add(x, y))
-                cont()
-                act = False
-            except ValueError:
-                print("Please enter integers only.")
+        # Checks whether or not the input is a valid input
+        if msg not in poss:
+            print("-------------------------")
+            print("Please provide a valid input.")
+            cont()
 
-    # Check for subtraction operation
-    if msg == '2':
-        print("-------------------------")
-        act = True
-        # While act is true, this branch runs and a try - except statement
-        # is evaluated to alert the user of errors and to request new inputs.
-        while act:
-            try:
-                x = input("Enter the first number: ")
-                if x == 'quit':
-                    inp_quit()
-                y = input("Enter the second number: ")
-                if y == 'quit':
-                    inp_quit()
-                print("-------------------------")
-                print(subtract(x, y))
-                cont()
-                act = False
-            except ValueError:
-                print("Please enter an integer.")
-
-    # Check for multiplication operation
-    if msg == '3':
-        print("-------------------------")
-        act = True
-        # While act is true, this branch runs and a try - except statement
-        # is evaluated to alert the user of errors and to request new inputs.
-        while act:
-            try:
-                x = input("Enter the first number: ")
-                if x == 'quit':
-                    inp_quit()
-                y = input("Enter the second number: ")
-                if y == 'quit':
-                    inp_quit()
-                print("-------------------------")
-                print(mult(x, y))
-                cont()
-                act = False
-            except ValueError:
-                print("Please enter an integer.")
-
-    # Check for division operation
-    if msg == '4':
-        print("-------------------------")
-        act = True
-        # While act is true, this branch runs and a try - except statement
-        # is evaluated to alert the user of errors and to request new inputs.
-        # This one also has a branch for any ZeroDivisionErrors that arise.
-        while act:
-            try:
-                x = input("Enter the first number: ")
-                if x == 'quit':
-                    inp_quit()
-                y = input("Enter the second number: ")
-                if y == 'quit':
-                    inp_quit()
-                print("-------------------------")
-                print(div(x, y))
-                cont()
-                act = False
-            except ValueError:
-                print("Please input an integer.")
-            except ZeroDivisionError as error:
-                print(f"{error}: Cannot divide by 0.")
-
-    # Check for long division operation
-    if msg == '5':
-        print("-------------------------")
-        act = True
-        # While act is true, this branch runs and a try - except statement
-        # is evaluated to alert the user of errors and to request new inputs.
-        # This one also has a branch for any ZeroDivisionErrors that arise.
-        while act:
-            try:
-                x = input("Enter the first number: ")
-                if x == 'quit':
-                    inp_quit()
-                y = input("Enter the second number: ")
-                if y == 'quit':
-                    inp_quit()
-                print("-------------------------")
-                # If-else statement that checks whether or not the inputs
-                # are positive. If they are not, new inputs are requested.
-                if int(x) < 0 or int(y) < 0:
-                    print("Please input positive integers.")
-                else:
-                    print(longdiv(x, y))
+        # Check for addition operation
+        if msg == '1':
+            print("-------------------------")
+            # First number inputted
+            act = True
+            # While act is true, this branch runs and a try - except statement
+            # is evaluated to alert the user of errors and to request new inputs.
+            while act:
+                try:
+                    x = input("Enter the first number: ")
+                    if x == 'quit':
+                        inp_quit()
+                    # Second number inputted
+                    y = input("Enter the second number: ")
+                    if y == 'quit':
+                        inp_quit()
+                    print("-------------------------")
+                    print(add(x, y))
                     cont()
                     act = False
-            except ValueError:
-                print("Please input an integer.")
-            except ZeroDivisionError as error:
-                print(f"{error}: Cannot divide by 0. Please try"
-                      " again. ")
+                except ValueError:
+                    print("Please enter integers only.")
 
-    # Check for square root operation
-    if msg == '6':
-        print("-------------------------")
-        act = True
-        # While act is true, this branch runs and a try - except statement
-        # is evaluated to alert the user of errors and to request a new input.
-        while act:
-            try:
-                x = input("Enter the number you would like to"
-                          " find the root of. ")
-                if x == 'quit':
-                    inp_quit()
-                print("-------------------------")
-                print(square_root(x))
-                cont()
-                act = False
-            except ValueError:
-                print("Please input an integer.")
+        # Check for subtraction operation
+        if msg == '2':
+            print("-------------------------")
+            act = True
+            # While act is true, this branch runs and a try - except statement
+            # is evaluated to alert the user of errors and to request new inputs.
+            while act:
+                try:
+                    x = input("Enter the first number: ")
+                    if x == 'quit':
+                        inp_quit()
+                    y = input("Enter the second number: ")
+                    if y == 'quit':
+                        inp_quit()
+                    print("-------------------------")
+                    print(subtract(x, y))
+                    cont()
+                    act = False
+                except ValueError:
+                    print("Please enter an integer.")
 
-    # Checks for user input as 'quit.' If the input is 'quit,' the program
-    # ends.
-    if msg == 'quit':
-        inp_quit()
+        # Check for multiplication operation
+        if msg == '3':
+            print("-------------------------")
+            act = True
+            # While act is true, this branch runs and a try - except statement
+            # is evaluated to alert the user of errors and to request new inputs.
+            while act:
+                try:
+                    x = input("Enter the first number: ")
+                    if x == 'quit':
+                        inp_quit()
+                    y = input("Enter the second number: ")
+                    if y == 'quit':
+                        inp_quit()
+                    print("-------------------------")
+                    print(mult(x, y))
+                    cont()
+                    act = False
+                except ValueError:
+                    print("Please enter an integer.")
+
+        # Check for division operation
+        if msg == '4':
+            print("-------------------------")
+            act = True
+            # While act is true, this branch runs and a try - except statement
+            # is evaluated to alert the user of errors and to request new inputs.
+            # This one also has a branch for any ZeroDivisionErrors that arise.
+            while act:
+                try:
+                    x = input("Enter the first number: ")
+                    if x == 'quit':
+                        inp_quit()
+                    y = input("Enter the second number: ")
+                    if y == 'quit':
+                        inp_quit()
+                    print("-------------------------")
+                    print(div(x, y))
+                    cont()
+                    act = False
+                except ValueError:
+                    print("Please input an integer.")
+                except ZeroDivisionError as error:
+                    print(f"{error}: Cannot divide by 0.")
+
+        # Check for long division operation
+        if msg == '5':
+            print("-------------------------")
+            act = True
+            # While act is true, this branch runs and a try - except statement
+            # is evaluated to alert the user of errors and to request new inputs.
+            # This one also has a branch for any ZeroDivisionErrors that arise.
+            while act:
+                try:
+                    x = input("Enter the first number: ")
+                    if x == 'quit':
+                        inp_quit()
+                    y = input("Enter the second number: ")
+                    if y == 'quit':
+                        inp_quit()
+                    print("-------------------------")
+                    # If-else statement that checks whether or not the inputs
+                    # are positive. If they are not, new inputs are requested.
+                    if int(x) < 0 or int(y) < 0:
+                        print("Please input positive integers.")
+                    else:
+                        print(longdiv(x, y))
+                        cont()
+                        act = False
+                except ValueError:
+                    print("Please input an integer.")
+                except ZeroDivisionError as error:
+                    print(f"{error}: Cannot divide by 0. Please try"
+                        " again. ")
+
+        # Check for square root operation
+        if msg == '6':
+            print("-------------------------")
+            act = True
+            # While act is true, this branch runs and a try - except statement
+            # is evaluated to alert the user of errors and to request a new input.
+            while act:
+                try:
+                    x = input("Enter the number you would like to"
+                            " find the root of. ")
+                    if x == 'quit':
+                        inp_quit()
+                    print("-------------------------")
+                    print(square_root(x))
+                    cont()
+                    act = False
+                except ValueError:
+                    print("Please input an integer.")
+
+        # Checks for user input as 'quit.' If the input is 'quit,' the program
+        # ends.
+        if msg == 'quit':
+            inp_quit()
