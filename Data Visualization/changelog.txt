@@ -1,0 +1,5 @@
+2019/06/02:
+v0.01
+    - PROJECT START
+    - installed matplotlib for use in Graphing Calculator
+    - currently uses basic calculator form from prior project

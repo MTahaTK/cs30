@@ -1,5 +1,8 @@
 from pathlib import Path
 import os
+
+import wow
+
 def bp_ins(filename, start, end):
     """Inserts breakpoints into code"""
     with open(filename, 'r') as f:
@@ -18,12 +21,12 @@ def debug_file_exec(filename):
     """Executes provided file through the console"""
     exec(open(f"break_{filename}").read())
 
-filename = 'text.py'
-bp_ins(filename, 2, 66)
-exec(open('break_text.py').read())
+# filename = 'text.py'
+# bp_ins(filename, 2, 66)
+# exec(open('break_text.py').read())
 #os.system("C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
 
-
+wow.find_function(print, 'text.py')
 # print('ok')
 # print('no')
 # print('9')
