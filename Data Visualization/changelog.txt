@@ -2,4 +2,13 @@
 v0.01
     - PROJECT START
     - installed matplotlib for use in Graphing Calculator
+    - installed Equation for use in plotting equations
     - currently uses basic calculator form from prior project
+
+2019/06/04
+v0.011
+    - Equation now implemented; user can provide program with a string in
+    mathematical syntax (separated by operators) and converts into
+    equation for Python to use
+    - Multiplication must use * operator
+    - Returns evaluation of equation with an x value of 3
