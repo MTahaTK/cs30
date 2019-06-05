@@ -1,4 +1,5 @@
 import math
+from Equation import Expression
 
 def add(x, y):
     """Adds two integers together"""
@@ -109,6 +110,16 @@ def inp_quit():
     print("Thank you for using this program.")
     print("I hope you enjoyed using it.")
     exit()
+
+def eval_expression(expression, x=''):
+    """nice"""
+    print(expression)
+    print(x)
+    fn = Expression(expression)
+    if x != '':
+        print(fn(x))
+    else:
+        print(fn)
 
 
 def cont():
