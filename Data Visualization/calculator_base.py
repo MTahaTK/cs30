@@ -1,4 +1,5 @@
 import math
+import matplotlib.pyplot as plt
 from Equation import Expression
 
 def add(x, y):
@@ -103,6 +104,13 @@ def square_root(x):
                     root = f"√-{rad} = i√{rad}"
     return root
 
+def graphing(exp):
+    fn = Expression(exp)
+    print(fn)
+    x_values = list(range(-99, 100))
+    y_values = [fn(x) for x in x_values]
+    plt.plot(x_values, y_values)
+    plt.show()
 
 def inp_quit():
     """Quits program after printing a message."""
@@ -128,7 +136,7 @@ def cont():
 def calculator():
     # Creates a series of prompts for each of the mathematical functions
     # defined earlier.
-    poss = ["1", "2", "3", "4", "5", "6", "quit"]
+    poss = ["1", "2", "3", "4", "5", "6", "7","quit"]
 
     prompt = "Enter '1' to add two integers.\n"
     prompt += "Enter '2' to subtract two integers.\n"
@@ -136,6 +144,7 @@ def calculator():
     prompt += "Enter '4' to divide two integers.\n"
     prompt += "Enter '5' for whole number division with a remainder.\n"
     prompt += "Enter '6' to calculate simplified square roots.\n"
+    prompt += "Enter '7' to graph functions.\n"
     prompt += "Enter 'quit' to end the program.\n"
     # Sets a flag - active - as True.
     active = True
@@ -294,6 +303,20 @@ def calculator():
                     act = False
                 except ValueError:
                     print("Please input an integer.")
+        
+        if msg == '7':
+            print("-------------------------")
+            act = True
+            exp_req = "Enter an algebraic expression in mathematical syntax: "
+            exp_req += "\nNOTE: MULTIPLICATION MUST USE THE * OPERATOR: "
+            while act:
+                exp = input(exp_req)
+                if exp == 'quit':
+                    inp_quit()
+                    print("-------------------------")
+                else:
+                    graphing(exp)
+                act = False
 
         # Checks for user input as 'quit.' If the input is 'quit,' the program
         # ends.
