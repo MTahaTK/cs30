@@ -29,7 +29,7 @@ def div(x, y):
 def longdiv(x, y):
     """Divides two integers and returns its remainder alongside
     the quotient."""
-    long_quotient = math.floor(div(x, y))
+    long_quotient = math.floor(int(x) / int(y))
     remainder = int(x) % int(y)
     longdiv_quotient = f"{x} / {y} = {long_quotient} R{remainder}"
     return longdiv_quotient
@@ -303,7 +303,7 @@ def calculator():
                     act = False
                 except ValueError:
                     print("Please input an integer.")
-        
+
         if msg == '7':
             print("-------------------------")
             act = True
@@ -311,12 +311,16 @@ def calculator():
             exp_req += "\nNOTE: MULTIPLICATION MUST USE THE * OPERATOR: "
             while act:
                 exp = input(exp_req)
+                print("-------------------------")
                 if exp == 'quit':
                     inp_quit()
                     print("-------------------------")
+                elif exp == '':
+                    print("Please enter a function.")
                 else:
                     graphing(exp)
-                act = False
+                    cont()
+                    act = False
 
         # Checks for user input as 'quit.' If the input is 'quit,' the program
         # ends.
