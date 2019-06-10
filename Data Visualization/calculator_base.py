@@ -105,6 +105,13 @@ def square_root(x):
                     root = f"√-{rad} = i√{rad}"
     return root
 
+def graphing(exp):
+    fn = Expression(exp)
+    print(fn)
+    x_values = list(range(-99, 100))
+    y_values = [fn(x) for x in x_values]
+    plt.plot(x_values, y_values)
+    plt.show()
 
 def graphing(exp):
     """Graphs provided expression"""
@@ -128,6 +135,16 @@ def inp_quit():
     print("Thank you for using this program.")
     print("I hope you enjoyed using it.")
     exit()
+
+def eval_expression(expression, x=''):
+    """nice"""
+    print(expression)
+    print(x)
+    fn = Expression(expression)
+    if x != '':
+        print(fn(x))
+    else:
+        print(fn)
 
 
 def eval_expression(expression, x=''):
