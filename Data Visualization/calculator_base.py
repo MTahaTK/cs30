@@ -115,7 +115,7 @@ def graphing(exp):
     # Gets bound values for x - axis
     x_1 = int(input("Please set your starting x - bound: "))
     x_2 = int(input("Please set your closing x - bound: "))
-    x_values = list(range(x_1, x_2))
+    x_values = list(range(x_1, x_2 + 1))
     # Uses  x - axis bounds to set y - axis bounds
     y_values = [fn(x) for x in x_values]
     plt.plot(x_values, y_values)
