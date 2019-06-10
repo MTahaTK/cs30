@@ -12,11 +12,23 @@ v0.11
     equation for Python to use
     - Multiplication must use * operator
     - Returns evaluation of equation with an x value of 3
+
 2019/06/05
 v0.2
     - Graphing function implemented into graphing_calculator.py: allows user to provide an algebraic equation string through Equation and graphs the function with set bounds.
     - Evaluation function added to caculator_base.py, however not currently implemented
     - Bugfixes regarding old calculator functions
+
 2019/06/06
 v0.3 ALPHA TESTING
     - Alpha testing found some errors in old calculator code, were subsequently fixed.
+
+2019/06/07 
+v0.4 BETA TESTING
+    - Implemented beta testing changes (grid lines)
+
+2019/06/08
+v1.0 RELEASE
+    - Final changes and fixes implemented
+    - All loops fixed
+    - Added exception handling to graphing function
