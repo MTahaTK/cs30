@@ -1,4 +1,7 @@
 import math
+import matplotlib.pyplot as plt
+from Equation import Expression
+
 
 def add(x, y):
     """Adds two integers together"""
@@ -27,7 +30,7 @@ def div(x, y):
 def longdiv(x, y):
     """Divides two integers and returns its remainder alongside
     the quotient."""
-    long_quotient = math.floor(div(x, y))
+    long_quotient = math.floor(int(x) / int(y))
     remainder = int(x) % int(y)
     longdiv_quotient = f"{x} / {y} = {long_quotient} R{remainder}"
     return longdiv_quotient
@@ -103,6 +106,22 @@ def square_root(x):
     return root
 
 
+def graphing(exp):
+    """Graphs provided expression"""
+    # Stores Expression-converted equation in 'fn'
+    fn = Expression(exp)
+    print(fn)
+    plt.grid(linewidth=0.5)
+    # Gets bound values for x - axis
+    x_1 = int(input("Please set your starting x - bound: "))
+    x_2 = int(input("Please set your closing x - bound: "))
+    x_values = list(range(x_1, x_2))
+    # Uses  x - axis bounds to set y - axis bounds
+    y_values = [fn(x) for x in x_values]
+    plt.plot(x_values, y_values)
+    plt.show()
+
+
 def inp_quit():
     """Quits program after printing a message."""
     print("-------------------------")
@@ -111,13 +130,25 @@ def inp_quit():
     exit()
 
 
+def eval_expression(expression, x=''):
+    """Evaluates provided expressions"""
+    print(expression)
+    print(x)
+    fn = Expression(expression)
+    if x != '':
+        print(fn(x))
+    else:
+        print(fn)
+
+
 def cont():
     msg = input("Press enter to continue. ")
+
 
 def calculator():
     # Creates a series of prompts for each of the mathematical functions
     # defined earlier.
-    poss = ["1", "2", "3", "4", "5", "6", "quit"]
+    poss = ["1", "2", "3", "4", "5", "6", "7", "quit"]
 
     prompt = "Enter '1' to add two integers.\n"
     prompt += "Enter '2' to subtract two integers.\n"
@@ -125,6 +156,7 @@ def calculator():
     prompt += "Enter '4' to divide two integers.\n"
     prompt += "Enter '5' for whole number division with a remainder.\n"
     prompt += "Enter '6' to calculate simplified square roots.\n"
+    prompt += "Enter '7' to graph functions.\n"
     prompt += "Enter 'quit' to end the program.\n"
     # Sets a flag - active - as True.
     active = True
@@ -152,7 +184,7 @@ def calculator():
             # First number inputted
             act = True
             # While act is true, this branch runs and a try - except statement
-            # is evaluated to alert the user of errors and to request new inputs.
+            # is evaluated to alert user of errors and to request new inputs.
             while act:
                 try:
                     x = input("Enter the first number: ")
@@ -174,7 +206,7 @@ def calculator():
             print("-------------------------")
             act = True
             # While act is true, this branch runs and a try - except statement
-            # is evaluated to alert the user of errors and to request new inputs.
+            # is evaluated to alert the of errors and to request new inputs.
             while act:
                 try:
                     x = input("Enter the first number: ")
@@ -195,7 +227,7 @@ def calculator():
             print("-------------------------")
             act = True
             # While act is true, this branch runs and a try - except statement
-            # is evaluated to alert the user of errors and to request new inputs.
+            # is evaluated to alert user of errors and to request new inputs.
             while act:
                 try:
                     x = input("Enter the first number: ")
@@ -216,7 +248,7 @@ def calculator():
             print("-------------------------")
             act = True
             # While act is true, this branch runs and a try - except statement
-            # is evaluated to alert the user of errors and to request new inputs.
+            # is evaluated to alert user of errors and to request new inputs.
             # This one also has a branch for any ZeroDivisionErrors that arise.
             while act:
                 try:
@@ -240,7 +272,7 @@ def calculator():
             print("-------------------------")
             act = True
             # While act is true, this branch runs and a try - except statement
-            # is evaluated to alert the user of errors and to request new inputs.
+            # is evaluated to alert user of errors and to request new inputs.
             # This one also has a branch for any ZeroDivisionErrors that arise.
             while act:
                 try:
@@ -263,18 +295,18 @@ def calculator():
                     print("Please input an integer.")
                 except ZeroDivisionError as error:
                     print(f"{error}: Cannot divide by 0. Please try"
-                        " again. ")
+                          " again. ")
 
         # Check for square root operation
         if msg == '6':
             print("-------------------------")
             act = True
             # While act is true, this branch runs and a try - except statement
-            # is evaluated to alert the user of errors and to request a new input.
+            # is evaluated to alert user of errors and to request a new input.
             while act:
                 try:
                     x = input("Enter the number you would like to"
-                            " find the root of. ")
+                              " find the root of. ")
                     if x == 'quit':
                         inp_quit()
                     print("-------------------------")
@@ -283,6 +315,31 @@ def calculator():
                     act = False
                 except ValueError:
                     print("Please input an integer.")
+
+        if msg == '7':
+            print("-------------------------")
+            act = True
+            exp_req = "Enter an algebraic expression in mathematical syntax: "
+            exp_req += "\nNOTE: THIS DOES NOT WORK WITH DISCONTINUOUS "
+            exp_req += "FUNCTIONS."
+            exp_req += "\nNOTE: MULTIPLICATION MUST USE THE * OPERATOR: "
+            # While act is true, this branch runs and a try - except statement
+            # is evaluated to alert user of errors and to request a new input.
+            while act:
+                try:
+                    exp = input(exp_req)
+                    print("-------------------------")
+                    if exp == 'quit':
+                        inp_quit()
+                        print("-------------------------")
+                    elif exp == '':
+                        print("Please enter a function.")
+                    else:
+                        graphing(exp)
+                        cont()
+                        act = False
+                except ZeroDivisionError:
+                    print("Please input only continuous functions.")
 
         # Checks for user input as 'quit.' If the input is 'quit,' the program
         # ends.

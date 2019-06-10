@@ -1,0 +1,5 @@
+CHECKLIST:
+    - Adjusted calculator function: Completed
+    - String expression to Python operations support: Completed
+    - Graphing function: Completed
+    - Input-based graphing: Completed
